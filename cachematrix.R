@@ -35,3 +35,9 @@ cacheSolve <- function(x, ...) {
   x$setsolve(m)
   m
 }
+
+##Passing a matrix to the vectors and getting the inverse
+
+convmat <- matrix(c(1,2,3,4),nrow=2,ncol=2)
+invertedmatrix <- makeCacheMatrix(convmat)
+cacheSolve(invertedmatrix)
