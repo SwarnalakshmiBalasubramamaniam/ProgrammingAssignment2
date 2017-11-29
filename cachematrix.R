@@ -6,12 +6,14 @@
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y){
-    x <<- y
+    x <<- y ## Sets the value in the parent environment
     m <<- NULL
   }
   get<- function()x
-  setsolve <- function (solve) m <<- solve
+  setsolve <- function (solve) m <<- solve ## assigns the value of the inverted matrix
   getsolve <- function () m
+  ## returns all the functions inside the main function, list is used, since this is supposed to return muliple functions
+  
   list (set = set, 
         get = get, 
         setsolve = setsolve, 
@@ -30,7 +32,10 @@ cacheSolve <- function(x, ...) {
     message("getting cached data")
     return(m)
   }
+  
+  ## gets the data which was previously assigned
   data <- x$get()
+  ## creates the inverse of the matrix with the solve function
   m <- solve(data)
   x$setsolve(m)
   m
